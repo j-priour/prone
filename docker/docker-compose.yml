@@ -19,3 +19,12 @@ services:
     volumes:
       -  ~/lab/prone/www/html:/var/www/html
       -  ~/lab/prone/logs:/var/log/apache2
+    depends_on:
+      - pronedata
+  pronedata:
+    container_name:  prone_data
+    build:
+      context: ./prone_base
+      dockerfile: Dockerfile
+    ports:
+      - "3306:3306"
