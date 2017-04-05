@@ -1,0 +1,21 @@
+#===================================
+# PRONE Docker web server
+#===================================
+
+version:  "3"
+
+# services definition
+services:
+  # webserver
+  proneweb:
+    container_name: prone_web
+    build:
+      context: ./prone_web
+      dockerfile: Dockerfile
+    ports:
+      - "22:22"
+      - "80:80"
+      - "443:443"
+    volumes:
+      -  ~/lab/prone/www/html:/var/www/html
+      -  ~/lab/prone/logs:/var/log/apache2
